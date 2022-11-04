@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "185015103270",
+    "project_id": "random-film-95b48",
+    "storage_bucket": "random-film-95b48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185015103270:android:1f8d80a17e03f6c5cedbe7",
+        "android_client_info": {
+          "package_name": "com.example.random_film"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185015103270-eg429qc96u2ltj43u3qv7t5dd2r6vgqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUzeCrMgckOE6q28Qysl5a1g0pfc7qoAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185015103270-eg429qc96u2ltj43u3qv7t5dd2r6vgqh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "185015103270-cphgft6nttojpqvncb9jr4s1brl6gvah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.randomFilm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
