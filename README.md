@@ -1,16 +1,12 @@
 # random_film
 
-A new Flutter project.
+simple list of film to watch 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![](readMeAssets/Screenshot 2022-11-04 alle 19.47.17.png)
+![](readMeAssets/Screenshot 2022-11-04 alle 19.47.17.png)
+![](readMeAssets/Screenshot 2022-11-04 alle 19.47.51.png)
+![](readMeAssets/Screenshot 2022-11-04 alle 19.48.05.png)
+![](readMeAssets/Screenshot 2022-11-04 alle 19.48.15.png)
+![](readMeAssets/Screenshot 2022-11-04 alle 19.49.05.png)
