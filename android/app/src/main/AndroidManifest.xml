@@ -3,7 +3,8 @@
    <application
         android:label="random_film"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/robolist"
+       >
         <activity
             android:name=".MainActivity"
             android:exported="true"

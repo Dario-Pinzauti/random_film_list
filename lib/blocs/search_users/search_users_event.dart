@@ -12,3 +12,12 @@ class SearchUser extends SearchUsersEvent{
   @override
   List<Object?> get props => [user];
 }
+
+class GetUserById extends SearchUsersEvent{
+  final String userId;
+
+  GetUserById(this.userId);
+
+  @override
+  List<Object?> get props => [userId];
+}

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:random_film/blocs/search_users/search_users_bloc.dart';
 import 'package:random_film/components/rf_navigation_drawer.dart';
 import 'package:random_film/drawers/page_drawer.dart';
 import 'package:random_film/dtos/shared_list.dart';
@@ -59,48 +60,53 @@ Widget _sharedList(BuildContext context) => BlocProvider(
 
 Widget _cardSharedList(BuildContext context, SharedList sharedList,
         ManageSharedListsState state) =>
-    InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    SharedListDetail(state: state, listId: sharedList.id!)));
-      },
-      child: Card(
-        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundImage: Image.network(FirebaseAuth
-                                    .instance.currentUser?.photoURL !=
-                                null
-                            ? FirebaseAuth.instance.currentUser!.photoURL!
-                            : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png')
-                        .image,
-                    radius: 35,
-                  ),
-                ),
-              ],
-            ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    BlocProvider(
+      create: (context) => SearchUsersBloc()..searchUserById(sharedList.usersId.where((element) => !element.contains(FirebaseAuth.instance.currentUser!.uid)).first),
+      child: BlocBuilder<SearchUsersBloc, SearchUsersState>(
+        builder: (context, userState) {
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SharedListDetail(
+                          state: state, listId: sharedList.id!)));
+            },
+            child: Card(
+              shape:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Text(FirebaseAuth.instance.currentUser!.displayName!,
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                           Text(FirebaseAuth.instance.currentUser!.email!)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          backgroundImage: Image.network(userState is GettedUser && userState.user!.imagePath != null ? userState.user!.imagePath!
+                              : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png')
+                              .image,
+                          radius: 35,
+                        ),
+                      ),
                     ],
                   ),
-                ),
-          ],
-        ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(userState is GettedUser  ? userState.user!.name! : "",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(userState is GettedUser  ? userState.user!.email : "",)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
 

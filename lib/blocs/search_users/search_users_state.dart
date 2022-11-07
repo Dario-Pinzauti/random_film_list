@@ -30,3 +30,22 @@ class SearchedUser extends SearchUsersState {
 
 }
 
+
+class GettingUser extends SearchUsersState {
+
+  GettingUser();
+
+  @override
+  List<Object> get props => [];
+
+}
+
+class GettedUser extends SearchUsersState {
+  final RLUser? user;
+
+  GettedUser(this.user);
+
+  @override
+  List<Object> get props => [user!];
+
+}

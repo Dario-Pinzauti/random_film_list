@@ -41,5 +41,14 @@ class UserService {
   }
 
 
+  Future<RLUser?> findUserById(String userId) async {
+    var name = await db.collection("users").where("id", isEqualTo: userId).get();
+    var nameMap = name.docs.map((e) => RLUser.fromJson(e.data()));
+    if(nameMap != null ){
+      return nameMap.toList().first;
+    }
+    return null;
+  }
+
 
 }

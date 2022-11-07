@@ -15,22 +15,51 @@ class RegistrationAllState extends RegistrationFormState {
       {super.email, super.username, super.password, super.passwordConfirm});
 
   bool get validateMail {
-    return super.email != null &&
-        RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-            .hasMatch(super.email!);
+    if(super.email == null){
+      return true;
+    }else if( RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(super.email!)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   bool get validatePassword {
-    return super.password != null && super.password!.length >= 6;
+    if(super.password == null){
+      return true;
+    } else if(super.password!.length >= 6){
+      return true;
+    }else{
+      return false;
+    }
   }
 
-  bool get validatePasswordConfirm =>
-      super.passwordConfirm != null &&
-      super.password?.compareTo(super.passwordConfirm!)==0;
+  bool get validatePasswordConfirm {
+    if(super.passwordConfirm == null){
+      return true;
+    } else if(super.password?.compareTo(super.passwordConfirm!)==0){
+      return true;
+    } else{
+      return false;
+    }
+  }
 
-  bool get validateUsername => super.username != null && super.username != '';
+  bool get validateUsername {
+    if(super.username == null){
+      return true;
+    } else if(super.username != ''){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   bool get enableRegistration =>
+      super.username != null &&
+      super.password != null &&
+      super.passwordConfirm != null &&
+      super.email != null &&
       validateMail &&
       validatePassword &&
       validatePasswordConfirm &&
